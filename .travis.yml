@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t drout/react-test -f Dockerfile.dev ./client
+  - docker build -t drout/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true drout/react-test npm test 
