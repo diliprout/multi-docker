@@ -16,6 +16,7 @@ after_success:
 
   #Log in to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  
   #Take images from above and push them to Docker Hub
   - docker push drout/multi-client
   - docker push drout/multi-nginx
