@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t drout/react-test -f Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true drout/react-test npm test 
+
+after_success:
+  - docker build -t drout/multi-client ./client
+  - docker build -t drout/multi-nginx ./nginx
+  - docker build -t drout/multi-server ./server
+  - docker build -t drout/multi-worker ./worker
+
+  #Log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Take images from above and push them to Docker Hub
+  - docker push drout/multi-client
+  - docker push drout/multi-nginx
+  - docker push drout/multi-server
+  - docker push drout/multi-worker
