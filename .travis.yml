@@ -22,3 +22,16 @@ after_success:
   - docker push drout/multi-nginx
   - docker push drout/multi-server
   - docker push drout/multi-worker
+
+  # deploy:
+  #   provider: elasticbeanstalk
+  #   region: <sub-domain present in aws url>
+  #   app: multi-docker
+  #   env: MultiDocker-env
+  #   bucket_name: <search s3 and then your sub-domain, then open the sub-domain>
+  #   bucket_path: docker-multi
+  #   on:
+  #     branch: master
+  #   access_key_id: $AWS_ACCESS_KEY
+  #   secret_access_key:
+  #     secure: $AWS_SECRET_KEY
