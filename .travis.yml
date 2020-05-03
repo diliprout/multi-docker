@@ -18,10 +18,10 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   
   #Take images from above and push them to Docker Hub
-  - docker push drout/multi-client
-  - docker push drout/multi-nginx
-  - docker push drout/multi-server
-  - docker push drout/multi-worker
+  - docker push dr98docker/drepo98:drout/multi-client
+  - docker push dr98docker/drepo98:drout/multi-nginx
+  - docker push dr98docker/drepo98:drout/multi-server
+  - docker push dr98docker/drepo98:drout/multi-worker
 
   # deploy:
   #   provider: elasticbeanstalk
